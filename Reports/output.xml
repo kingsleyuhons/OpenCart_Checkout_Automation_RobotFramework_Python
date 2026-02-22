@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.13.7 on win32)" generated="2026-02-17T23:58:50.148211" rpa="false" schemaversion="5">
+<suite id="s1" name="Checkout Order Confirmation" source="C:\Users\USER\PycharmProjects\Project-RobotFramework-Python\TestCases\Checkout_Order_Confirmation.robot">
+<test id="s1-t1" name="Verify Users are able to checkout selected product - Checkout/Order confirmation Workflow" line="7">
+<kw name="User should be able to navigate to checkout page and proceed to pay for single product" owner="Keywords">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-02-17T23:58:51.208943" level="INFO">Creating Session using : alias=shop, url=https://awesomeqa.com/ui/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>shop</arg>
+<arg>${BASE}</arg>
+<arg>verify=${FALSE}</arg>
+<arg>disable_warnings=1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-02-17T23:58:51.208048" elapsed="0.001572"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-02-17T23:58:51.210625" level="INFO">${cart} = {'product_id': '43', 'quantity': '2'}</msg>
+<var>${cart}</var>
+<arg>product_id=43</arg>
+<arg>quantity=2</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-02-17T23:58:51.209986" elapsed="0.000710"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-02-17T23:58:52.277174" level="INFO">POST Request : url=https://awesomeqa.com/ui/index.php?route=checkout/cart/add 
+ path_url=/ui/index.php?route=checkout/cart/add 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '24', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=product_id=43&amp;quantity=2 
+ </msg>
+<msg time="2026-02-17T23:58:52.277339" level="INFO">POST Response : url=https://awesomeqa.com/ui/index.php?route=checkout/cart/add 
+ status=200, reason=OK 
+ headers={'Connection': 'Keep-Alive', 'Keep-Alive': 'timeout=5, max=100', 'X-Powered-By': 'PHP/7.4.33', 'set-cookie': 'OCSESSID=dde78cb4cda455a1a1cf0e8fd4; path=/; secure, language=en-gb; expires=Thu, 19-Mar-2026 21:58:52 GMT; Max-Age=2592000; path=/; domain=awesomeqa.com; secure, currency=USD; expires=Thu, 19-Mar-2026 21:58:52 GMT; Max-Age=2592000; path=/; domain=awesomeqa.com; secure', 'Content-Type': 'application/json', 'Content-Length': '198', 'Content-Encoding': 'gzip', 'Vary': 'Accept-Encoding', 'Date': 'Tue, 17 Feb 2026 21:58:52 GMT', 'Server': 'LiteSpeed', 'platform': 'hostinger', 'panel': 'hpanel', 'Retry-After': '60', 'Content-Security-Policy': 'upgrade-insecure-requests', 'alt-svc': 'h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, h3-Q050=":443"; ma=2592000, h3-Q046=":443"; ma=2592000, h3-Q043=":443"; ma=2592000, quic=":443"; ma=2592000; v="43,46"'} 
+ body={"success":"Success: You have added &lt;a href=\"https:\/\/awesomeqa.com\/ui\/index.php?route=product\/product&amp;amp;product_id=43\"&gt;MacBook&lt;\/a&gt; to your &lt;a href=\"https:\/\/awesomeqa.com\/ui\/index.php?route=checkout\/cart\"&gt;shopping cart&lt;\/a&gt;!","total":"2 item(s) - $1,204.00"} 
+ </msg>
+<msg time="2026-02-17T23:58:52.277546" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>shop</arg>
+<arg>url=/index.php?route=checkout/cart/add</arg>
+<arg>data=${cart}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-17T23:58:51.211015" elapsed="1.066571"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-17T23:58:52.279210" level="INFO">{"success":"Success: You have added &lt;a href=\"https:\/\/awesomeqa.com\/ui\/index.php?route=product\/product&amp;amp;product_id=43\"&gt;MacBook&lt;\/a&gt; to your &lt;a href=\"https:\/\/awesomeqa.com\/ui\/index.php?route=checkout\/cart\"&gt;shopping cart&lt;\/a&gt;!","total":"2 item(s) - $1,204.00"}</msg>
+<arg>${resp.text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-17T23:58:52.277820" elapsed="0.001501"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-02-17T23:58:52.279735" level="INFO">${login} = {'email': 'kings2021uh@gmail.com', 'password': 'School5'}</msg>
+<var>${login}</var>
+<arg>email=kings2021uh@gmail.com</arg>
+<arg>password=School5</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-02-17T23:58:52.279495" elapsed="0.000277"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-02-17T23:58:52.641247" level="INFO">POST Request : url=https://awesomeqa.com/ui/index.php?route=checkout/login/save 
+ path_url=/ui/index.php?route=checkout/login/save 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'OCSESSID=dde78cb4cda455a1a1cf0e8fd4; language=en-gb; currency=USD', 'Content-Length': '46', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=email=kings2021uh%40gmail.com&amp;password=School5 
+ </msg>
+<msg time="2026-02-17T23:58:52.641469" level="INFO">POST Response : url=https://awesomeqa.com/ui/index.php?route=checkout/login/save 
+ status=200, reason=OK 
+ headers={'Connection': 'Keep-Alive', 'Keep-Alive': 'timeout=5, max=100', 'X-Powered-By': 'PHP/7.4.33', 'set-cookie': 'OCSESSID=dde78cb4cda455a1a1cf0e8fd4; path=/; secure', 'Content-Type': 'application/json', 'Content-Length': '93', 'Content-Encoding': 'gzip', 'Vary': 'Accept-Encoding', 'Date': 'Tue, 17 Feb 2026 21:58:52 GMT', 'Server': 'LiteSpeed', 'platform': 'hostinger', 'panel': 'hpanel', 'Retry-After': '60', 'Content-Security-Policy': 'upgrade-insecure-requests'} 
+ body={"error":{"warning":"Warning: No match for E-Mail Address and\/or Password."}} 
+ </msg>
+<msg time="2026-02-17T23:58:52.641821" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>shop</arg>
+<arg>url=/index.php?route=checkout/login/save</arg>
+<arg>data=${login}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-17T23:58:52.279927" elapsed="0.361979"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-17T23:58:52.645054" level="INFO">{"error":{"warning":"Warning: No match for E-Mail Address and\/or Password."}}</msg>
+<arg>${resp.text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-17T23:58:52.642330" elapsed="0.002896"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-02-17T23:58:52.998263" level="INFO">POST Request : url=https://awesomeqa.com/ui/index.php?route=checkout/payment_address 
+ path_url=/ui/index.php?route=checkout/payment_address 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'OCSESSID=dde78cb4cda455a1a1cf0e8fd4; language=en-gb; currency=USD', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2026-02-17T23:58:52.998411" level="INFO">POST Response : url=https://awesomeqa.com/ui/index.php?route=checkout/payment_address 
+ status=200, reason=OK 
+ headers={'Connection': 'Keep-Alive', 'Keep-Alive': 'timeout=5, max=100', 'X-Powered-By': 'PHP/7.4.33', 'set-cookie': 'OCSESSID=dde78cb4cda455a1a1cf0e8fd4; path=/; secure', 'Content-Type': 'text/html; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Content-Encoding': 'gzip', 'Vary': 'Accept-Encoding', 'Date': 'Tue, 17 Feb 2026 21:58:53 GMT', 'Server': 'LiteSpeed', 'platform': 'hostinger', 'panel': 'hpanel', 'Retry-After': '60', 'Content-Security-Policy': 'upgrade-insecure-requests'} 
+ body=&lt;form class="form-horizontal"&gt;
+    &lt;br /&gt;
+  &lt;div id="payment-new" style="display: block;"&gt;
+    &lt;div class="form-group required"&gt;
+      &lt;label class="col-sm-2 control-label" for="input-payment-firstname"&gt;First Name&lt;/label&gt;
+      &lt;div class="col-sm-10"&gt;
+        &lt;input type="text" name="firstname" value="" placeholder="First Name" id="input-payment-firstname" class="form-control" /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group required"&gt;
+      &lt;label class="col-sm-2 control-label" for="input-payment-lastname"&gt;Last Name&lt;/label&gt;
+      &lt;div class="col-sm-10"&gt;
+        &lt;input type="text" name="lastname" value="" placeholder="Last Name" id="input-payment-lastname" class="form-control" /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+      &lt;label class="col-sm-2 control-label" for="input-payment-company"&gt;Company&lt;/label&gt;
+      &lt;div class="col-sm-10"&gt;
+        &lt;input type="text" name="company" value="" placeholder="Company" id="input-payment-company" class="form-control" /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group required"&gt;
+      &lt;label class="col-sm-2 control-label" for="input-payment-address-1"&gt;Address 1&lt;/label&gt;
+      &lt;div class="col-sm-10"&gt;
+        &lt;input type="text" name="address_1" value="" placeholder="Address 1" id="input-payment-address-1" class="form-control" /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+      &lt;label class="col-sm-2 control-label" for="input-payment-address-2"&gt;Address 2&lt;/label&gt;
+      &lt;div class="col-sm-10"&gt;
+        &lt;input type="text" name="address_2" value="" placeholder="Address 2" id="input-payment-address-2" class="form-control" /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group required"&gt;
+      &lt;label class="col-sm-2 control-label" for="input-payment-city"&gt;City&lt;/label&gt;
+      &lt;div class="col-sm-10"&gt;
+        &lt;input type="text" name="city" value="" placeholder="City" id="input-payment-city" class="form-control" /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group required"&gt;
+      &lt;label class="col-sm-2 control-label" for="input-payment-postcode"&gt;Post Code&lt;/label&gt;
+      &lt;div class="col-sm-10"&gt;
+        &lt;input type="text" name="postcode" value="" placeholder="Post Code" id="input-payment-postcode" class="form-control" /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group required"&gt;
+      &lt;label class="col-sm-2 control-label" for="input-payment-country"&gt;Country&lt;/label&gt;
+      &lt;div class="col-sm-10"&gt;
+        &lt;select name="country_id" id="input-payment-country" class="form-control"&gt;
+          &lt;option value=""&gt; --- Please Select --- &lt;/option&gt;
+                             &lt;option value="244"&gt;Aaland Islands&lt;/option&gt;
+                                        &lt;option value="1"&gt;Afghanistan&lt;/option&gt;
+                                        &lt;option value="2"&gt;Albania&lt;/option&gt;
+                                        &lt;option value="3"&gt;Algeria&lt;/option&gt;
+                                        &lt;option value="4"&gt;American Samoa&lt;/option&gt;
+                                        &lt;option value="5"&gt;Andorra&lt;/option&gt;
+                                        &lt;option value="6"&gt;Angola&lt;/option&gt;
+                                        &lt;option value="7"&gt;Anguilla&lt;/option&gt;
+                                        &lt;option value="8"&gt;Antarctica&lt;/option&gt;
+                                        &lt;option value="9"&gt;Antigua and Barbuda&lt;/option&gt;
+                                        &lt;option value="10"&gt;Argentina&lt;/option&gt;
+                                        &lt;option value="11"&gt;Armenia&lt;/option&gt;
+                                        &lt;option value="12"&gt;Aruba&lt;/option&gt;
+                                        &lt;option value="252"&gt;Ascension Island (British)&lt;/option&gt;
+                                        &lt;option value="13"&gt;Australia&lt;/option&gt;
+                                        &lt;option value="14"&gt;Austria&lt;/option&gt;
+                                        &lt;option value="15"&gt;Azerbaijan&lt;/option&gt;
+                                        &lt;option value="16"&gt;Bahamas&lt;/option&gt;
+                                        &lt;option value="17"&gt;Bahrain&lt;/option&gt;
+                                        &lt;option value="18"&gt;Bangladesh&lt;/option&gt;
+                                        &lt;option value="19"&gt;Barbados&lt;/option&gt;
+                                        &lt;option value="20"&gt;Belarus&lt;/option&gt;
+                                        &lt;option value="21"&gt;Belgium&lt;/option&gt;
+                                        &lt;option value="22"&gt;Belize&lt;/option&gt;
+                                        &lt;option value="23"&gt;Benin&lt;/option&gt;
+                                        &lt;option value="24"&gt;Bermuda&lt;/option&gt;
+                                        &lt;option value="25"&gt;Bhutan&lt;/option&gt;
+                                        &lt;option value="26"&gt;Bolivia&lt;/option&gt;
+                                        &lt;option value="245"&gt;Bonaire, Sint Eustatius and Saba&lt;/option&gt;
+                                        &lt;option value="27"&gt;Bosnia and Herzegovina&lt;/option&gt;
+                                        &lt;option value="28"&gt;Botswana&lt;/option&gt;
+                                        &lt;option value="29"&gt;Bouvet Island&lt;/option&gt;
+                                        &lt;option value="30"&gt;Brazil&lt;/option&gt;
+                                        &lt;option value="31"&gt;British Indian Ocean Territory&lt;/option&gt;
+                                        &lt;option value="32"&gt;Brunei Darussalam&lt;/option&gt;
+                                        &lt;option value="33"&gt;Bulgaria&lt;/option&gt;
+                                        &lt;option value="34"&gt;Burkina Faso&lt;/option&gt;
+                                        &lt;option value="35"&gt;Burundi&lt;/option&gt;
+                                        &lt;option value="36"&gt;Cambodia&lt;/option&gt;
+                                        &lt;option value="37"&gt;Cameroon&lt;/option&gt;
+                                        &lt;option value="38"&gt;Canada&lt;/option&gt;
+                                        &lt;option value="251"&gt;Canary Islands&lt;/option&gt;
+                                        &lt;option value="39"&gt;Cape Verde&lt;/option&gt;
+                                        &lt;option value="40"&gt;Cayman Islands&lt;/option&gt;
+                                        &lt;option value="41"&gt;Central African Republic&lt;/option&gt;
+                                        &lt;option value="42"&gt;Chad&lt;/option&gt;
+                                        &lt;option value="43"&gt;Chile&lt;/option&gt;
+                                        &lt;option value="44"&gt;China&lt;/option&gt;
+                                        &lt;option value="45"&gt;Christmas Island&lt;/option&gt;
+                                        &lt;option value="46"&gt;Cocos (Keeling) Islands&lt;/option&gt;
+                                        &lt;option value="47"&gt;Colombia&lt;/option&gt;
+                                        &lt;option value="48"&gt;Comoros&lt;/option&gt;
+                                        &lt;option value="49"&gt;Congo&lt;/option&gt;
+                                        &lt;option value="50"&gt;Cook Islands&lt;/option&gt;
+                                        &lt;option value="51"&gt;Costa Rica&lt;/option&gt;
+                                        &lt;option value="52"&gt;Cote D'Ivoire&lt;/option&gt;
+                                        &lt;option value="53"&gt;Croatia&lt;/option&gt;
+                                        &lt;option value="54"&gt;Cuba&lt;/option&gt;
+                                        &lt;option value="246"&gt;Curacao&lt;/option&gt;
+                                        &lt;option value="55"&gt;Cyprus&lt;/option&gt;
+                                        &lt;option value="56"&gt;Czech Republic&lt;/option&gt;
+                                        &lt;option value="237"&gt;Democratic Republic of Congo&lt;/option&gt;
+                                        &lt;option value="57"&gt;Denmark&lt;/option&gt;
+                                        &lt;option value="58"&gt;Djibouti&lt;/option&gt;
+                                        &lt;option value="59"&gt;Dominica&lt;/option&gt;
+                                        &lt;option value="60"&gt;Dominican Republic&lt;/option&gt;
+                                        &lt;option value="61"&gt;East Timor&lt;/option&gt;
+                                        &lt;option value="62"&gt;Ecuador&lt;/option&gt;
+                                        &lt;option value="63"&gt;Egypt&lt;/option&gt;
+                                        &lt;option value="64"&gt;El Salvador&lt;/option&gt;
+                                        &lt;option value="65"&gt;Equatorial Guinea&lt;/option&gt;
+                                        &lt;option value="66"&gt;Eritrea&lt;/option&gt;
+                                        &lt;option value="67"&gt;Estonia&lt;/option&gt;
+                                        &lt;option value="68"&gt;Ethiopia&lt;/option&gt;
+                                        &lt;option value="69"&gt;Falkland Islands (Malvinas)&lt;/option&gt;
+                                        &lt;option value="70"&gt;Faroe Islands&lt;/option&gt;
+                                        &lt;option value="71"&gt;Fiji&lt;/option&gt;
+                                        &lt;option value="72"&gt;Finland&lt;/option&gt;
+                                        &lt;option value="74"&gt;France, Metropolitan&lt;/option&gt;
+                                        &lt;option value="75"&gt;French Guiana&lt;/option&gt;
+                                        &lt;option value="76"&gt;French Polynesia&lt;/option&gt;
+                                        &lt;option value="77"&gt;French Southern Territories&lt;/option&gt;
+                                        &lt;option value="126"&gt;FYROM&lt;/option&gt;
+                                        &lt;option value="78"&gt;Gabon&lt;/option&gt;
+                                        &lt;option value="79"&gt;Gambia&lt;/option&gt;
+                                        &lt;option value="80"&gt;Georgia&lt;/option&gt;
+                                        &lt;option value="81"&gt;Germany&lt;/option&gt;
+                                        &lt;option value="82"&gt;Ghana&lt;/option&gt;
+                                        &lt;option value="83"&gt;Gibraltar&lt;/option&gt;
+                                        &lt;option value="84"&gt;Greece&lt;/option&gt;
+                                        &lt;option value="85"&gt;Greenland&lt;/option&gt;
+                                        &lt;option value="86"&gt;Grenada&lt;/option&gt;
+                                        &lt;option value="87"&gt;Guadeloupe&lt;/option&gt;
+                                        &lt;option value="88"&gt;Guam&lt;/option&gt;
+          ... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<arg>shop</arg>
+<arg>url=/index.php?route=checkout/payment_address</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-17T23:58:52.645457" elapsed="0.353496"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-02-17T23:58:53.373471" level="INFO">POST Request : url=https://awesomeqa.com/ui/index.php?route=checkout/shipping_address 
+ path_url=/ui/index.php?route=checkout/shipping_address 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'OCSESSID=dde78cb4cda455a1a1cf0e8fd4; language=en-gb; currency=USD', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2026-02-17T23:58:53.373869" level="INFO">POST Response : url=https://awesomeqa.com/ui/index.php?route=checkout/shipping_address 
+ status=200, reason=OK 
+ headers={'Connection': 'Keep-Alive', 'Keep-Alive': 'timeout=5, max=100', 'X-Powered-By': 'PHP/7.4.33', 'set-cookie': 'OCSESSID=dde78cb4cda455a1a1cf0e8fd4; path=/; secure', 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': '4433', 'Content-Encoding': 'gzip', 'Vary': 'Accept-Encoding', 'Date': 'Tue, 17 Feb 2026 21:58:53 GMT', 'Server': 'LiteSpeed', 'platform': 'hostinger', 'panel': 'hpanel', 'Retry-After': '60', 'Content-Security-Policy': 'upgrade-insecure-requests'} 
+ body=&lt;form class="form-horizontal"&gt;
+    &lt;br /&gt;
+  &lt;div id="shipping-new" style="display: block;"&gt;
+    &lt;div class="form-group required"&gt;
+      &lt;label class="col-sm-2 control-label" for="input-shipping-firstname"&gt;First Name&lt;/label&gt;
+      &lt;div class="col-sm-10"&gt;
+        &lt;input type="text" name="firstname" value="" placeholder="First Name" id="input-shipping-firstname" class="form-control" /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group required"&gt;
+      &lt;label class="col-sm-2 control-label" for="input-shipping-lastname"&gt;Last Name&lt;/label&gt;
+      &lt;div class="col-sm-10"&gt;
+        &lt;input type="text" name="lastname" value="" placeholder="Last Name" id="input-shipping-lastname" class="form-control" /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+      &lt;label class="col-sm-2 control-label" for="input-shipping-company"&gt;Company&lt;/label&gt;
+      &lt;div class="col-sm-10"&gt;
+        &lt;input type="text" name="company" value="" placeholder="Company" id="input-shipping-company" class="form-control" /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group required"&gt;
+      &lt;label class="col-sm-2 control-label" for="input-shipping-address-1"&gt;Address 1&lt;/label&gt;
+      &lt;div class="col-sm-10"&gt;
+        &lt;input type="text" name="address_1" value="" placeholder="Address 1" id="input-shipping-address-1" class="form-control" /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+      &lt;label class="col-sm-2 control-label" for="input-shipping-address-2"&gt;Address 2&lt;/label&gt;
+      &lt;div class="col-sm-10"&gt;
+        &lt;input type="text" name="address_2" value="" placeholder="Address 2" id="input-shipping-address-2" class="form-control" /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group required"&gt;
+      &lt;label class="col-sm-2 control-label" for="input-shipping-city"&gt;City&lt;/label&gt;
+      &lt;div class="col-sm-10"&gt;
+        &lt;input type="text" name="city" value="" placeholder="City" id="input-shipping-city" class="form-control" /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group required"&gt;
+      &lt;label class="col-sm-2 control-label" for="input-shipping-postcode"&gt;Post Code&lt;/label&gt;
+      &lt;div class="col-sm-10"&gt;
+        &lt;input type="text" name="postcode" value="" placeholder="Post Code" id="input-shipping-postcode" class="form-control" /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group required"&gt;
+      &lt;label class="col-sm-2 control-label" for="input-shipping-country"&gt;Country&lt;/label&gt;
+      &lt;div class="col-sm-10"&gt;
+        &lt;select name="country_id" id="input-shipping-country" class="form-control"&gt;
+          &lt;option value=""&gt; --- Please Select --- &lt;/option&gt;
+                              &lt;option value="244"&gt;Aaland Islands&lt;/option&gt;
+                                          &lt;option value="1"&gt;Afghanistan&lt;/option&gt;
+                                          &lt;option value="2"&gt;Albania&lt;/option&gt;
+                                          &lt;option value="3"&gt;Algeria&lt;/option&gt;
+                                          &lt;option value="4"&gt;American Samoa&lt;/option&gt;
+                                          &lt;option value="5"&gt;Andorra&lt;/option&gt;
+                                          &lt;option value="6"&gt;Angola&lt;/option&gt;
+                                          &lt;option value="7"&gt;Anguilla&lt;/option&gt;
+                                          &lt;option value="8"&gt;Antarctica&lt;/option&gt;
+                                          &lt;option value="9"&gt;Antigua and Barbuda&lt;/option&gt;
+                                          &lt;option value="10"&gt;Argentina&lt;/option&gt;
+                                          &lt;option value="11"&gt;Armenia&lt;/option&gt;
+                                          &lt;option value="12"&gt;Aruba&lt;/option&gt;
+                                          &lt;option value="252"&gt;Ascension Island (British)&lt;/option&gt;
+                                          &lt;option value="13"&gt;Australia&lt;/option&gt;
+                                          &lt;option value="14"&gt;Austria&lt;/option&gt;
+                                          &lt;option value="15"&gt;Azerbaijan&lt;/option&gt;
+                                          &lt;option value="16"&gt;Bahamas&lt;/option&gt;
+                                          &lt;option value="17"&gt;Bahrain&lt;/option&gt;
+                                          &lt;option value="18"&gt;Bangladesh&lt;/option&gt;
+                                          &lt;option value="19"&gt;Barbados&lt;/option&gt;
+                                          &lt;option value="20"&gt;Belarus&lt;/option&gt;
+                                          &lt;option value="21"&gt;Belgium&lt;/option&gt;
+                                          &lt;option value="22"&gt;Belize&lt;/option&gt;
+                                          &lt;option value="23"&gt;Benin&lt;/option&gt;
+                                          &lt;option value="24"&gt;Bermuda&lt;/option&gt;
+                                          &lt;option value="25"&gt;Bhutan&lt;/option&gt;
+                                          &lt;option value="26"&gt;Bolivia&lt;/option&gt;
+                                          &lt;option value="245"&gt;Bonaire, Sint Eustatius and Saba&lt;/option&gt;
+                                          &lt;option value="27"&gt;Bosnia and Herzegovina&lt;/option&gt;
+                                          &lt;option value="28"&gt;Botswana&lt;/option&gt;
+                                          &lt;option value="29"&gt;Bouvet Island&lt;/option&gt;
+                                          &lt;option value="30"&gt;Brazil&lt;/option&gt;
+                                          &lt;option value="31"&gt;British Indian Ocean Territory&lt;/option&gt;
+                                          &lt;option value="32"&gt;Brunei Darussalam&lt;/option&gt;
+                                          &lt;option value="33"&gt;Bulgaria&lt;/option&gt;
+                                          &lt;option value="34"&gt;Burkina Faso&lt;/option&gt;
+                                          &lt;option value="35"&gt;Burundi&lt;/option&gt;
+                                          &lt;option value="36"&gt;Cambodia&lt;/option&gt;
+                                          &lt;option value="37"&gt;Cameroon&lt;/option&gt;
+                                          &lt;option value="38"&gt;Canada&lt;/option&gt;
+                                          &lt;option value="251"&gt;Canary Islands&lt;/option&gt;
+                                          &lt;option value="39"&gt;Cape Verde&lt;/option&gt;
+                                          &lt;option value="40"&gt;Cayman Islands&lt;/option&gt;
+                                          &lt;option value="41"&gt;Central African Republic&lt;/option&gt;
+                                          &lt;option value="42"&gt;Chad&lt;/option&gt;
+                                          &lt;option value="43"&gt;Chile&lt;/option&gt;
+                                          &lt;option value="44"&gt;China&lt;/option&gt;
+                                          &lt;option value="45"&gt;Christmas Island&lt;/option&gt;
+                                          &lt;option value="46"&gt;Cocos (Keeling) Islands&lt;/option&gt;
+                                          &lt;option value="47"&gt;Colombia&lt;/option&gt;
+                                          &lt;option value="48"&gt;Comoros&lt;/option&gt;
+                                          &lt;option value="49"&gt;Congo&lt;/option&gt;
+                                          &lt;option value="50"&gt;Cook Islands&lt;/option&gt;
+                                          &lt;option value="51"&gt;Costa Rica&lt;/option&gt;
+                                          &lt;option value="52"&gt;Cote D'Ivoire&lt;/option&gt;
+                                          &lt;option value="53"&gt;Croatia&lt;/option&gt;
+                                          &lt;option value="54"&gt;Cuba&lt;/option&gt;
+                                          &lt;option value="246"&gt;Curacao&lt;/option&gt;
+                                          &lt;option value="55"&gt;Cyprus&lt;/option&gt;
+                                          &lt;option value="56"&gt;Czech Republic&lt;/option&gt;
+                                          &lt;option value="237"&gt;Democratic Republic of Congo&lt;/option&gt;
+                                          &lt;option value="57"&gt;Denmark&lt;/option&gt;
+                                          &lt;option value="58"&gt;Djibouti&lt;/option&gt;
+                                          &lt;option value="59"&gt;Dominica&lt;/option&gt;
+                                          &lt;option value="60"&gt;Dominican Republic&lt;/option&gt;
+                                          &lt;option value="61"&gt;East Timor&lt;/option&gt;
+                                          &lt;option value="62"&gt;Ecuador&lt;/option&gt;
+                                          &lt;option value="63"&gt;Egypt&lt;/option&gt;
+                                          &lt;option value="64"&gt;El Salvador&lt;/option&gt;
+                                          &lt;option value="65"&gt;Equatorial Guinea&lt;/option&gt;
+                                          &lt;option value="66"&gt;Eritrea&lt;/option&gt;
+                                          &lt;option value="67"&gt;Estonia&lt;/option&gt;
+                                          &lt;option value="68"&gt;Ethiopia&lt;/option&gt;
+                                          &lt;option value="69"&gt;Falkland Islands (Malvinas)&lt;/option&gt;
+                                          &lt;option value="70"&gt;Faroe Islands&lt;/option&gt;
+                                          &lt;option value="71"&gt;Fiji&lt;/option&gt;
+                                          &lt;option value="72"&gt;Finland&lt;/option&gt;
+                                          &lt;option value="74"&gt;France, Metropolitan&lt;/option&gt;
+                                          &lt;option value="75"&gt;French Guiana&lt;/option&gt;
+                                          &lt;option value="76"&gt;French Polynesia&lt;/option&gt;
+                                          &lt;option value="77"&gt;French Southern Territories&lt;/option&gt;
+                                          &lt;option value="126"&gt;FYROM&lt;/option&gt;
+                                          &lt;option value="78"&gt;Gabon&lt;/option&gt;
+                                          &lt;option value="79"&gt;Gambia&lt;/option&gt;
+                                          &lt;option value="80"&gt;Georgia&lt;/option&gt;
+                                          &lt;option value="81"&gt;Germany&lt;/option&gt;
+                                          &lt;option value="82"&gt;Ghana&lt;/option&gt;
+                                          &lt;option value="83"&gt;Gibraltar&lt;/option&gt;
+                                          &lt;option value="84"&gt;Greece&lt;/option&gt;
+                                          &lt;option value="85"&gt;Greenland&lt;/option&gt;
+                                        ... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<arg>shop</arg>
+<arg>url=/index.php?route=checkout/shipping_address</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-17T23:58:52.999197" elapsed="0.375668"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-02-17T23:58:53.376404" level="INFO">${ship} = {'shipping_method': 'flat.flat'}</msg>
+<var>${ship}</var>
+<arg>shipping_method=flat.flat</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-02-17T23:58:53.375575" elapsed="0.000969"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-02-17T23:58:53.723294" level="INFO">POST Request : url=https://awesomeqa.com/ui/index.php?route=checkout/shipping_method/save 
+ path_url=/ui/index.php?route=checkout/shipping_method/save 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'OCSESSID=dde78cb4cda455a1a1cf0e8fd4; language=en-gb; currency=USD', 'Content-Length': '25', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=shipping_method=flat.flat 
+ </msg>
+<msg time="2026-02-17T23:58:53.723484" level="INFO">POST Response : url=https://awesomeqa.com/ui/index.php?route=checkout/shipping_method/save 
+ status=200, reason=OK 
+ headers={'Connection': 'Keep-Alive', 'Keep-Alive': 'timeout=5, max=100', 'X-Powered-By': 'PHP/7.4.33', 'set-cookie': 'OCSESSID=dde78cb4cda455a1a1cf0e8fd4; path=/; secure', 'Content-Type': 'application/json', 'Content-Length': '130', 'Content-Encoding': 'gzip', 'Vary': 'Accept-Encoding', 'Date': 'Tue, 17 Feb 2026 21:58:53 GMT', 'Server': 'LiteSpeed', 'platform': 'hostinger', 'panel': 'hpanel', 'Retry-After': '60', 'Content-Security-Policy': 'upgrade-insecure-requests'} 
+ body={"redirect":"https:\/\/awesomeqa.com\/ui\/index.php?route=checkout\/checkout","error":{"warning":"Warning: Shipping method required!"}} 
+ </msg>
+<msg time="2026-02-17T23:58:53.723815" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>shop</arg>
+<arg>url=/index.php?route=checkout/shipping_method/save</arg>
+<arg>data=${ship}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-17T23:58:53.377112" elapsed="0.346776"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-17T23:58:53.726654" level="INFO">{"redirect":"https:\/\/awesomeqa.com\/ui\/index.php?route=checkout\/checkout","error":{"warning":"Warning: Shipping method required!"}}</msg>
+<arg>${resp.text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-17T23:58:53.724259" elapsed="0.002518"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-02-17T23:58:53.727523" level="INFO">${pay} = {'payment_method': 'cod', 'agree': '1'}</msg>
+<var>${pay}</var>
+<arg>payment_method=cod</arg>
+<arg>agree=1</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-02-17T23:58:53.727100" elapsed="0.000491"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-02-17T23:58:54.074325" level="INFO">POST Request : url=https://awesomeqa.com/ui/index.php?route=checkout/payment_method/save 
+ path_url=/ui/index.php?route=checkout/payment_method/save 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'OCSESSID=dde78cb4cda455a1a1cf0e8fd4; language=en-gb; currency=USD', 'Content-Length': '26', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=payment_method=cod&amp;agree=1 
+ </msg>
+<msg time="2026-02-17T23:58:54.074446" level="INFO">POST Response : url=https://awesomeqa.com/ui/index.php?route=checkout/payment_method/save 
+ status=200, reason=OK 
+ headers={'Connection': 'Keep-Alive', 'Keep-Alive': 'timeout=5, max=100', 'X-Powered-By': 'PHP/7.4.33', 'set-cookie': 'OCSESSID=dde78cb4cda455a1a1cf0e8fd4; path=/; secure', 'Content-Type': 'application/json', 'Content-Length': '130', 'Content-Encoding': 'gzip', 'Vary': 'Accept-Encoding', 'Date': 'Tue, 17 Feb 2026 21:58:54 GMT', 'Server': 'LiteSpeed', 'platform': 'hostinger', 'panel': 'hpanel', 'Retry-After': '60', 'Content-Security-Policy': 'upgrade-insecure-requests'} 
+ body={"redirect":"https:\/\/awesomeqa.com\/ui\/index.php?route=checkout\/checkout","error":{"warning":"Warning: Payment method required!"}} 
+ </msg>
+<arg>shop</arg>
+<arg>url=/index.php?route=checkout/payment_method/save</arg>
+<arg>data=${pay}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-17T23:58:53.727956" elapsed="0.346590"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-17T23:58:54.076271" level="INFO">{"redirect":"https:\/\/awesomeqa.com\/ui\/index.php?route=checkout\/checkout","error":{"warning":"Warning: Shipping method required!"}}</msg>
+<arg>${resp.text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-17T23:58:54.074800" elapsed="0.001535"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-02-17T23:58:54.419352" level="INFO">POST Request : url=https://awesomeqa.com/ui/index.php?route=checkout/confirm 
+ path_url=/ui/index.php?route=checkout/confirm 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'OCSESSID=dde78cb4cda455a1a1cf0e8fd4; language=en-gb; currency=USD', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2026-02-17T23:58:54.419511" level="INFO">POST Response : url=https://awesomeqa.com/ui/index.php?route=checkout/confirm 
+ status=200, reason=OK 
+ headers={'Connection': 'Keep-Alive', 'Keep-Alive': 'timeout=5, max=100', 'X-Powered-By': 'PHP/7.4.33', 'set-cookie': 'OCSESSID=dde78cb4cda455a1a1cf0e8fd4; path=/; secure', 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': '125', 'Content-Encoding': 'gzip', 'Vary': 'Accept-Encoding', 'Date': 'Tue, 17 Feb 2026 21:58:54 GMT', 'Server': 'LiteSpeed', 'platform': 'hostinger', 'panel': 'hpanel', 'Retry-After': '60', 'Content-Security-Policy': 'upgrade-insecure-requests'} 
+ body= 
+&lt;script type="text/javascript"&gt;&lt;!--
+location = 'https://awesomeqa.com/ui/index.php?route=checkout/checkout';
+//--&gt;&lt;/script&gt; 
+ 
+ 
+ </msg>
+<msg time="2026-02-17T23:58:54.419788" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>shop</arg>
+<arg>url=/index.php?route=checkout/confirm</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-17T23:58:54.076530" elapsed="0.343316"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-17T23:58:54.421455" level="INFO"> 
+&lt;script type="text/javascript"&gt;&lt;!--
+location = 'https://awesomeqa.com/ui/index.php?route=checkout/checkout';
+//--&gt;&lt;/script&gt; 
+ 
+</msg>
+<arg>${resp.text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-17T23:58:54.420132" elapsed="0.001388"/>
+</kw>
+<status status="PASS" start="2026-02-17T23:58:51.204263" elapsed="3.217360"/>
+</kw>
+<status status="PASS" start="2026-02-17T23:58:51.202863" elapsed="3.219171"/>
+</test>
+<kw name="Close All Browsers" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2026-02-17T23:58:54.423441" elapsed="0.000341"/>
+</kw>
+<doc>Checkout Functionality</doc>
+<status status="PASS" start="2026-02-17T23:58:50.151102" elapsed="4.272793"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Checkout Order Confirmation" id="s1" pass="1" fail="0" skip="0">Checkout Order Confirmation</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

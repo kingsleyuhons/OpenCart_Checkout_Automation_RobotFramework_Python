@@ -1,0 +1,135 @@
+*** Settings ***
+
+*** Variables ***
+${BROWSER}      chrome
+${BROWSER2}    edge
+${URL}      https://awesomeqa.com/ui/
+${APP_LOGO}     //img[@title='TheTestingAcademy eCommerce']
+${ACCOUNT_BTN}    //span[normalize-space()='My Account']
+${REGISTER_LINK}       //a[normalize-space()='Register']
+${FIRST_NAME}      id=input-firstname
+${LAST_NAME}    id=input-lastname
+${EMAIL}        id=input-email
+${LOGIN_EMAIL}      //*[@id="input-email"]
+${TELEPHONE}       id=input-telephone
+${PASSWORD}     id=input-password
+${LOGIN_PASSWORD}       //*[@id="input-password"]
+${CONFIRM_PASSWORD}   id=input-confirm
+${LOGIN_BTN}    //input[@id='button-login']
+${NEWSLETTER_SUBSCRIBE}    //label[normalize-space()='No']
+${AGREE_POLICY}     //input[@name='agree']
+${SUBMIT_BTN}       //input[@class='btn btn-primary']
+${LOGIN_LINK}        //ul[@class='dropdown-menu dropdown-menu-right']//a[normalize-space()='Login']
+${ACCOUNT_LOGIN_BTN}    //input[@value='Login']
+${AUTH_ERROR_INVALID_LOGIN}     Warning: No match for E-Mail Address and/or Password.
+${FORGOT_PASSWORD_LINK}     //div[@class='form-group']//a[normalize-space()='Forgotten Password']
+${RETRIVE_PASSWORD_BTN}        //input[@value='Continue']
+${SHOP_CATEGORY_MAIN_MENU}      //*[@id="entry_217832"]/a
+${LOGOUT_USER}    //a[@class='list-group-item'][normalize-space()='Logout']
+#ACCOUNT UPDATE VARIABLES
+${UPDATE_ACCOUNT_INFO}      //a[text()='Edit your account information']
+${FIRSTNAME_UPDATE}     //input[@id='input-firstname']
+${LASTNAME_UPDATE}      //input[@id='input-lastname']
+${TELEPHONE_UPDATE}     //input[@id='input-telephone']
+${PROFILE_UPDATE_SUBMIT_BTN}    //input[@value='Continue']
+${UPDATE_PASSWORD_LINK}      //a[text()='Change your password']
+${UPDATE_PASSWORD_FIELD}    //input[@id='input-password']
+${UPDATE_CONFIRM-PASSWORD_FIELD}    //input[@id='input-confirm']
+${UPDATE_PASSWORD_SUBMIT_BTN}    //input[@value='Continue']
+#ADDRESS BOOK VARIABLES
+${ADD_USER_ADDRESS_LINK}     //a[text()='Address Book']
+${NEW_ADDRESS_BTN}      //a[text()='New Address']
+${ADDRESSBOOK_COMPANYNAME}   //input[@id='input-company']
+${ADDRESSBOOK_ADDRESS}      //input[@id='input-address-1']
+${ADDRESSBOOK_CITY}     //input[@id='input-city']
+${ADDRESSBOOK_POSTCODE}     //input[@id='input-postcode']
+${ADDRESSBOOK_COUNTRY}      //select[@id='input-country']
+${ADDRESSBOOK_REGION}       //select[@id='input-zone']
+${SUBMIT_ADDRESS_BTN}   //input[@value='Continue']
+${MODIFY_ADDRESSBOOK_LINK}     //a[text()='Modify your address book entries']
+${EDIT_ADDRESSBOOK}     //a[text()='Edit']
+${EDIT_ADDRESSBOOK_CITY}    //input[@id='input-address-1']
+${DELETE_ADDRESSBOOK}    //a[text()='Delete']
+${UPDATE_ADDRESSBOOK_BTN}  //input[@value='Continue']
+#PRODUCT SEARCH LOCATORS
+${SEARCH_FIELD}   //input[@placeholder='Search']
+${SEARCH_BTN}   //button[@class='btn btn-default btn-lg']
+${SORT_FIELD}   //select[@id='input-sort']
+${SCROLL_DOWN}   //div[@class='col-sm-6 text-right']
+${MACBOOK}      //img[@title='MacBook']
+${MACBOOK_PREVIEW}      //li[1]//a[1]//img[1]
+${MACBOOK_NEXT}     //button[@title='Next (Right arrow key)']
+${MACBOOK_CLOSE}        //button[normalize-space()='×']
+#ADD TO CART LOCATORS
+${MACBOOK_QTY}      //input[@id='input-quantity']
+${ADD_TO_CART_BTN}      //button[@id='button-cart']
+${LAPTOPS_NOTEBOOKS_MENU}    //a[@class='dropdown-toggle'][normalize-space()='Laptops & Notebooks']
+${ALL_LAPTOPS_NOTEBOOKS}     //a[normalize-space()='Show All Laptops & Notebooks']
+${HP_LP3065}    //img[@title='HP LP3065']
+${CALENDAR}     //i[@class='fa fa-calendar']
+${SCROLL_TO_ADD_CART}       //button[@id='button-cart']
+${MONTH_YEAR_CALENDAR}      //th[@class="picker-switch"]
+${NEXT_ARROW}     //th[@class='next']
+${DAY_CALENDAR}     //td[@class='day'][text()='7']
+${HP_LP3065_QUANTITY}       //input[@name='quantity']
+${ADD_TO_CART}       //button[@id='button-cart']
+${TARGET_DELIVERY_MONTH}    February 2023
+${COMPONENTS_MENU}     //a[text()='Components']
+${COMPONENTS_MONITORS}      //a[text()='Monitors (2)']
+${APPLE_CINEMA}     //div[@class='image']//img[@title='Apple Cinema 30"']
+${RADIO_MEDIUM}     //input[@value='6']
+${CHECKBOX3}        //input[@value='10']
+${ADDITIONAL_TEXT}      //input[@id='input-option208']
+${SELECT_COLOUR}    //select[@id='input-option217']
+${REF_TEXTAREA}     //textarea[@id='input-option209']
+${FILE_UPLOAD}      //button[@id='button-upload222']
+${FILE_PATH}     ${CURDIR}\test_upload.png
+${APPLE_CALENDAR}      //div[@class='input-group date']//i[@class='fa fa-calendar']
+${APPLE_MONTH_YEAR_CALENDAR}    //li[@class='collapse in']//th[@class='picker-switch']
+${APPLE_DAY_CALENDAR}    //body[1]/div[3]/div[1]/div[1]/table[1]/tbody[1]/tr[2]/td[5]
+${APPLE_TARGET_DELIVERY_MONTH}    September 2012
+${APPLE_NEXT_ARROW}    //li[@class='collapse in']//div[@class='datepicker-days']//th[@class='next'][contains(text(),'›')]
+${APPLE_DELIVERY_TIME_FIELD}      //input[@id='input-option221']
+${APPLE_DELIVERY_DATE_TIME}     //div[@class='input-group datetime']//i[@class='fa fa-calendar']
+${APPLE_DELIVERY_DAY}    //body[1]/div[4]/ul[1]/li[1]/div[1]/div[1]/table[1]/tbody[1]/tr[2]/td[5]
+${APPLE_DELIVERY_HOUR}      //body[1]/div[4]/ul[1]/li[3]/div[1]/div[1]/table[1]/tbody[1]/tr[2]/td[1]/span[1]
+${PREV_HOUR_ARROW}      //body[1]/div[4]/ul[1]/li[3]/div[1]/div[1]/table[1]/tbody[1]/tr[3]/td[1]/a[1]/span[1]
+${APPLE_DELIVERY_MINUTE}    //body[1]/div[4]/ul[1]/li[3]/div[1]/div[1]/table[1]/tbody[1]/tr[2]/td[3]/span[1]
+${NEXT_MINUTE_ARROW}       //body[1]/div[4]/ul[1]/li[3]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/td[3]/a[1]/span[1]
+${APPLE_TIME_PICKER}        //li[@class='picker-switch accordion-toggle']//a[@class='btn']
+${APPLE_QUANTITY}       //input[@id='input-quantity']
+${SCROLL_TO_ADD_CART2}     //a[text()='Write a review']
+${APPLE_ADD_TO_CART}      //button[@id='button-cart']
+${SCROLL_APPLE_CINEMA}   //div[@id='product-product']//li[1]//a[1]//img[1]
+#ADD TO CART VARIABLES
+${CART_ITEMS}       //span[@id='cart-total']
+${VIEW_CART}        //strong[normalize-space()='View Cart']
+${CHECKOUT_ITEMS2}      //a[@class='btn btn-primary']
+${CHECKOUT_ITEMS}       //strong[normalize-space()='Checkout']
+${GUEST_CHECKOUT_SELECT}    //input[@value='guest']
+${GUEST_CHECKOUT_CONTINUE}      //input[@id='button-account']
+${BILLING_DETAILS}      //a[normalize-space()='Step 2: Billing Details']
+${GUEST_FIRSTNAME}      //input[@id='input-payment-firstname']
+${GUEST_LASTNAME}    //input[@id='input-payment-lastname']
+${GUEST_EMAIL}      //input[@id='input-payment-email']
+${GUEST_TELEPHONE}      //input[@id='input-payment-telephone']
+${GUEST_COMPANY_NAME}     //input[@id='input-payment-company']
+${GUEST_ADDRESS}    //input[@id='input-payment-address-1']
+${GUEST_CITY}       //input[@id='input-payment-city']
+${GUEST_POSTCODE}    //input[@id='input-payment-postcode']
+${GUEST_COUNTRY}      //select[@id='input-payment-country']
+${GUEST_REGION_STATE}    //select[@id='input-payment-zone']
+${GUEST_PROCEED_BTN1}     //input[@id='button-guest']
+${GUEST_PROCEED_BTN2}       //input[@id='button-shipping-method']
+${GUEST_AGREE_TERMS}     //input[@name='agree']
+${GUEST_PROCEED_BTN3}       //input[@id='button-payment-method']
+${CONFIRM_ORDER_BTN}    //input[@id='button-confirm']
+${my_login_email}       kingsleyuhons@gmail.com
+${my_login_password}    School5
+${CONTINUE_CHECKOUT_BTN1}   //input[@id='button-payment-address']
+${CONTINUE_CHECKOUT_BTN2}   //input[@id='button-shipping-address']
+${CONTINUE_CHECKOUT_BTN3}   //input[@id='button-shipping-method']
+${AGREE_TERMS}      //input[@name='agree']
+${CONTINUE_CHECKOUT_BTN4}       //input[@id='button-payment-method']
+${BASE}      https://awesomeqa.com/ui/
+
